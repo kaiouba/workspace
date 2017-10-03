@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html>
+<style type="text/css">
+ .pull-left{
+  float:left;
+}
+   
+ .square_after{<!--定义div后边的三角形属性 -->
+    width: 0px;
+    height: 0px;
+    border-top: 13px solid transparent;
+    border-left: 12px solid #F6F6F6;
+    border-bottom: 13px solid transparent;
+  }
+  
+ .square_before{<!--定义div前边的三角形属性 -->
+    width: 0px;
+    height: 0px;
+    border-top: 13px solid transparent;
+    border-left: 12px solid white;
+    border-bottom: 13px solid transparent;
+  }
+  
+  #first_step{  
+	float: left;
+	font-size: 12px;
+	border-top: solid 1px #ddd;
+	border-bottom: solid 1px #ddd;
+	border-left:solid 1px #ddd;
+	border-right:hidden 1px #ddd;
+	background-color:#F6F6F6;
+	line-height:25px;
+	width:95px;
+	height:25px;
+	vertical-align:middle;
+	text-align:center;
+	margin:0px 0px;
+  }
+  
+  #second_step{
+	float: left;
+	font-size: 12px;
+	border-top: solid 1px #ddd;
+	border-bottom: solid 1px #ddd;
+	border-left:hidden 1px #ddd;
+	border-right:hidden 1px #ddd;
+	background-color:#F6F6F6;
+	line-height:25px;
+	width:95px;
+	height:25px;
+	vertical-align:middle;
+	text-align:center;
+	margin:0px 0px;
+  }
+  
+  #third_step{
+	float: left;
+	font-size: 12px;
+	border-top: solid 1px #ddd;
+	border-bottom: solid 1px #ddd;
+	border-left:hidden 1px #ddd;
+	border-right:hidden 1px #ddd;
+	background-color:#F6F6F6;
+	line-height:25px;
+	width:95px;
+	height:25px;
+	vertical-align:middle;
+	text-align:center;
+	margin:0px 0px;
+  }
+  
+  #fourth_step{
+	float: left;
+	font-size: 12px;
+	border-top: solid 1px #ddd;
+	border-bottom: solid 1px #ddd;
+	border-left:hidden 1px #ddd;
+	border-right:solid 1px #ddd;
+	background-color:#F6F6F6;
+	line-height:25px;
+	width:95px;
+	height:25px;
+	vertical-align:middle;
+	text-align:center;
+	margin:0px 0px;
+  }
+  
+</style>
+<div id="first_step" class="item" style="color:#666 100%">待接单
+</div>
+<div class="square_after pull-left after" id="square_first_after"></div>
+
+<div id="second_step" class="item" style="color:#666 100%">待发货
+<div class="square_before pull-left before" id="square_second_before"></div>
+</div>
+<div class="square_after pull-left after" id="square_second_after">
+</div>
+
+<div id="third_step" class="item" style="color:#666 100%">验证入库
+<div class="square_before pull-left before" id="square_third_before"></div>
+</div>
+<div class="square_after pull-left after" id="square_third_after">
+</div>
+
+<div id="fourth_step" class="item" style="color:#666 100%">已完成
+<div class="square_before pull-left before" id="square_fourth_before">
+</div>
+</div>
+
+<br/>
+<hr style="margin-top: 20px;"/>
+
+<select id="selected_id" onchange="return selectChange()">
+  <option value ="wait_accept">待接单</option>
+  <option value ="wait_deliver">待发货</option>
+  <option value ="stock_in">验证入库</option>
+  <option value ="delivered">已完成</option>
+</select>
+</div>
+<script>
+function selectChange(){
+var selected_val = document.getElementById("selected_id").value;
+
+if(selected_val=="wait_accept"){<!--根据下拉列表的value做出相应的页面展示 -->
+document.getElementById("first_step").style.cssText ="background-color:#e5e5e5";
+document.getElementById("square_first_after").style.cssText ="border-left: 12px solid #e5e5e5;";
+
+document.getElementById("second_step").style.cssText ="background-color:#F6F6F6";
+document.getElementById("square_second_after").style.cssText ="border-left: 12px solid #F6F6F6;";
+
+document.getElementById("third_step").style.cssText ="border:solid 1px #ddd";
+document.getElementById("third_step").style.cssText ="border-left:hidden 1px #ddd";
+document.getElementById("third_step").style.cssText ="border-right:hidden 1px #ddd";
+document.getElementById("square_third_before").style.cssText ="border-left: 12px solid white;";
+document.getElementById("square_third_after").style.cssText ="border-left: 12px solid #F6F6F6;";
+document.getElementById("third_step").style.color ="#666 100%";
+
+document.getElementById("fourth_step").style.cssText ="border:solid 1px #ddd";
+document.getElementById("fourth_step").style.cssText ="border-left:hidden 1px #ddd";
+document.getElementById("square_fourth_before").style.cssText ="border-left: 12px solid white;";
+document.getElementById("fourth_step").style.color ="#666 100%";
+
+}
+
+else if(selected_val=="wait_deliver"){
+document.getElementById("second_step").style.cssText ="background-color:#108EE9";
+document.getElementById("square_second_after").style.cssText ="border-left: 12px solid #108EE9;";
+
+document.getElementById("first_step").style.cssText ="background-color:#F6F6F6";
+document.getElementById("square_first_after").style.cssText ="border-left: 12px solid #F6F6F6;";
+
+document.getElementById("third_step").style.cssText ="border:solid 1px #ddd";
+document.getElementById("third_step").style.cssText ="border-left:hidden 1px #ddd";
+document.getElementById("third_step").style.cssText ="border-right:hidden 1px #ddd";
+document.getElementById("square_third_before").style.cssText ="border-left: 12px solid white;";
+document.getElementById("square_third_after").style.cssText ="border-left: 12px solid #F6F6F6;";
+document.getElementById("third_step").style.color ="#666 100%";
+
+document.getElementById("fourth_step").style.cssText ="border:solid 1px #ddd";
+document.getElementById("fourth_step").style.cssText ="border-left:hidden 1px #ddd";
+document.getElementById("square_fourth_before").style.cssText ="border-left: 12px solid white;";
+document.getElementById("fourth_step").style.color ="#666 100%";
+}
+
+else if(selected_val=="stock_in"){
+document.getElementById("third_step").style.cssText ="border:solid 1px #D0021B";
+document.getElementById("square_third_before").style.cssText ="border-left: 12px solid #F6F6F6;";
+document.getElementById("square_third_after").style.cssText ="border-left: 12px solid white;";
+document.getElementById("third_step").style.color ="#D0021B%";
+
+document.getElementById("first_step").style.cssText ="background-color:#F6F6F6";
+document.getElementById("square_first_after").style.cssText ="border-left: 12px solid #F6F6F6;";
+
+document.getElementById("second_step").style.cssText ="background-color:#F6F6F6";
+document.getElementById("square_second_after").style.cssText ="border-left: 12px solid #F6F6F6;";
+
+document.getElementById("fourth_step").style.cssText ="border:solid 1px #ddd";
+document.getElementById("fourth_step").style.cssText ="border-left:hidden 1px #ddd";
+document.getElementById("square_fourth_before").style.cssText ="border-left: 12px solid white;";
+document.getElementById("fourth_step").style.color ="#666 100%";
+}
+
+else if(selected_val=="delivered"){
+document.getElementById("fourth_step").style.cssText ="border:solid 1px #D0021B";
+document.getElementById("square_fourth_before").style.cssText ="border-left: 12px solid #F6F6F6;";
+document.getElementById("fourth_step").style.color ="#D0021B";
+
+document.getElementById("first_step").style.cssText ="background-color:#F6F6F6";
+document.getElementById("square_first_after").style.cssText ="border-left: 12px solid #F6F6F6;";
+
+document.getElementById("second_step").style.cssText ="background-color:#F6F6F6";
+document.getElementById("square_second_after").style.cssText ="border-left: 12px solid #F6F6F6;";
+
+document.getElementById("third_step").style.cssText ="border:solid 1px #ddd";
+document.getElementById("third_step").style.cssText ="border-left:hidden 1px #ddd";
+document.getElementById("third_step").style.cssText ="border-right:hidden 1px #ddd";
+document.getElementById("square_third_before").style.cssText ="border-left: 12px solid white;";
+document.getElementById("square_third_after").style.cssText ="border-left: 12px solid #F6F6F6;";
+document.getElementById("third_step").style.color ="#666 100%";
+}
+}
+</script>
+</html>
